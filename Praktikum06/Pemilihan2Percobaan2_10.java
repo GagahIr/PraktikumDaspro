@@ -4,8 +4,8 @@ public class Pemilihan2Percobaan2_10 {
     public static void main(String[] args) {
         Scanner input10 = new Scanner(System.in);
 
-        String member;
-        int jumlah_beli, menu, harga = 0;
+        String member, jenis_pembayaran;
+        int menu, harga = 0;
         double total_bayar = 0, diskon = 0;
 
         System.out.println("-------------------------");
@@ -37,8 +37,16 @@ public class Pemilihan2Percobaan2_10 {
                 System.out.println("Masukkan pilihan menu dengan benar");
                 return;
             }
-            total_bayar = harga - (harga * diskon);
-            System.out.println("Total bayar setelah diskon = " + total_bayar);
+            System.out.println("Apakah anda ingin membayar menggunakan QRIS? (y/n)");
+            jenis_pembayaran = input10.next();
+            if (jenis_pembayaran.equalsIgnoreCase("y")) {
+                total_bayar = harga - (harga * diskon);
+                total_bayar = total_bayar -= 1000;
+                System.out.println("Total bayar setelah diskon = " + total_bayar);
+            } else if (jenis_pembayaran.equalsIgnoreCase("n")) {
+                total_bayar = harga - (harga * diskon);
+                System.out.println("Total bayar setelah diskon = " + total_bayar);
+            }
         } else if (member.equalsIgnoreCase("n")) {
             if (menu == 1) {
                 harga = 14000;
@@ -53,7 +61,14 @@ public class Pemilihan2Percobaan2_10 {
                 System.out.println("Masukkan pilihan menu dengan benar");
                 return;
             }
-            System.out.println("Total bayar = " + harga);
+            System.out.println("Apakah anda ingin membayar menggunakan QRIS? (y/n)");
+            jenis_pembayaran = input10.next();
+            if (jenis_pembayaran.equalsIgnoreCase("y")) {
+                harga = harga - 1000;
+                System.out.println("Total bayar setelah diskon = " + harga);
+            } else if (jenis_pembayaran.equalsIgnoreCase("n")) {
+                System.out.println("Total bayar setelah diskon = " + harga);
+            }
         }
 
     }
